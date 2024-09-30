@@ -9,8 +9,8 @@ namespace AssetManagenetAPI.Factory
         {
             return assetDto.Type.ToLower() switch
             {
-                "vehicle" => CreateVehicle(assetDto),
-                "equipment" => CreateEquipment(assetDto),
+                "Vehicle" => CreateVehicle(assetDto),
+                "Equipment" => CreateEquipment(assetDto),
                 _ => throw new ArgumentException("Invalid asset type")
             };
         }
