@@ -7,12 +7,20 @@ namespace AssetManagenetAPI.Factory
     {
         public Asset CreateAsset(AssetCreationDto assetDto) 
         {
-            return assetDto.Type.ToLower() switch
-            {
-                "Vehicle" => CreateVehicle(assetDto),
-                "Equipment" => CreateEquipment(assetDto),
-                _ => throw new ArgumentException("Invalid asset type")
-            };
+            Asset asset;
+            switch (assetDto.Type) 
+            { 
+                   case "Vehicle" :
+                        asset = CreateVehicle(assetDto);
+                        break;
+                   case "Equipment" :
+                        asset = CreateEquipment(assetDto);
+                        break;
+                   default:
+                        throw new ArgumentException($"Invalid asset type: {assetDto.Type}");
+            }
+
+            return asset;
         }
 
         private Vehicle CreateVehicle(AssetCreationDto assetDto)
